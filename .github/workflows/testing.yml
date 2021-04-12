@@ -16,21 +16,20 @@ jobs:
   meets-expectations:
     runs-on: ubuntu-latest
     timeout-minutes: 1
-    if: "startsWith(github.event.head_commit.message, 'E:') ||
-         startsWith(github.event.head_commit.message, 'M:')"
+    if: "startsWith(github.event.head_commit.message, 'M:')"
     steps:
       - uses: actions/checkout@v2
       - name: Run M Tests
         run: |
-          ./test-m
+          ./test-m no-valgrind
 
-  exemplary-work:
+  meets-and-exemplary:
     runs-on: ubuntu-latest
     timeout-minutes: 1
-    needs: meets-expectations
     if: "startsWith(github.event.head_commit.message, 'E:')"
     steps:
       - uses: actions/checkout@v2
-      - name: Run E Tests
+      - name: Run M Tests
         run: |
-          ./test-e
+          ./test-m no-valgrind
+          ./test-e no-valgrind
