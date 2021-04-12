@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run M Tests
         run: |
-          ./test-m no-valgrind
+          ./test-m
 
   meets-and-exemplary:
     runs-on: ubuntu-latest
@@ -31,5 +31,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run M Tests
         run: |
-          ./test-m no-valgrind
-          ./test-e no-valgrind
+          ./test-m
+          ./test-e
